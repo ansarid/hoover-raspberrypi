@@ -59,7 +59,7 @@ my $interface;
 my $dumpFile;
 my $ifconfigPath = "/sbin/ifconfig";
 my $iwconfigPath = "/sbin/iwconfig";
-my $tsharkPath   = "/usr/local/bin/tshark";
+my $tsharkPath   = "/usr/bin/tshark";
 my $options = GetOptions(
 	"verbose"		=> \$verbose,
 	"help"			=> \$help,
