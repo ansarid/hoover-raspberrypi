@@ -102,10 +102,13 @@ _HELP_
 ( ! -x $tsharkPath) && die "tshark tool not available!\n";
 
 # Configure wireless interface
-(system("$ifconfigPath $interface up")) && "Cannot initialize interface $interface!\n";
+(system("$ifconfigPath $interface down")) && "Cannot initialize interface $interface!\n";
 
 # Set interface in monitor mode
 (system("$iwconfigPath $interface mode monitor")) && die "Cannot set interface $interface in monitoring mode!\n";
+
+# Configure wireless interface
+(system("$ifconfigPath $interface up")) && "Cannot initialize interface $interface!\n";
 
 # Create the child process to change wireless channels
 (!defined($pid = fork)) && die "Cannot fork child process!\n";
