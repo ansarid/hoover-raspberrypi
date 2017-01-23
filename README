@@ -16,3 +16,28 @@ Where:
 --iwconfig-path		: Path to your iwconfig binary
 --tshark-path		: Path to your tshark binary
 --dumpfile		: Save found SSID's/MAC addresses in a flat file (SIGUSR1)
+
+##################################################################################################
+Changes I Made:
+
+1. Changed tshark path from /usr/local/bin/tshark to /usr/bin/tshark.
+2. Changed steps to put interface into monititor mode.
+
+	From:
+	
+		# Configure wireless interface
+		(system("$ifconfigPath $interface up")) && "Cannot initialize interface $interface!\n";
+
+		# Set interface in monitor mode
+		(system("$iwconfigPath $interface mode monitor")) && die "Cannot set interface $interface in monitoring mode!\n";
+
+	To:
+
+		# Configure wireless interface
+		(system("$ifconfigPath $interface down")) && "Cannot initialize interface $interface!\n";
+
+		# Set interface in monitor mode
+		(system("$iwconfigPath $interface mode monitor")) && die "Cannot set interface $interface in monitoring mode!\n";
+
+		# Configure wireless interface
+		(system("$ifconfigPath $interface up")) && "Cannot initialize interface $interface!\n";
