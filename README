@@ -29,7 +29,7 @@ Changes I Made:
 		(system("$ifconfigPath $interface up")) && "Cannot initialize interface $interface!\n";
 
 		# Set interface in monitor mode
-		(system("$iwconfigPath $interface mode monitor")) && die "Cannot set interface $interface in monitoring mode!\n";
+		(system("$ifconfigPath $interface promisc")) && die "Cannot set interface $interface in monitoring mode!\n";
 
 	To:
 
